@@ -1,0 +1,165 @@
+<!-- @format -->
+
+<!-- HTML Page -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="profile" href="http://gmpg.org/xfn/11" />
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;700&family=Rubik:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.typekit.net/mei0hen.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+  <script src="scripts.js"></script>
+
+  <meta name="description" content="Bunker | Signature Builder" />
+  <title>Bunker | Signature Builder</title>
+</head>
+
+<body>
+  <main class="container pt-5">
+    <div class="row">
+      <h1 class="mb-5">Altum Group Email Signature Builder</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-4">
+        <form id="sig" class="drop-shadow p-4" method="GET">
+          <h3 class="mt-3 mt-lg-0 mb-3">Settings</h3>
+
+          <div class="form-floating mb-3">
+            <input type="text" name="name" class="form-control me-3 mb-3" placeholder="Full Name" />
+            <label for="name">Full Name</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" name="role" class="form-control me-3 mb-3" placeholder="Job Title" />
+            <label for="role">Job Title</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="email" name="email" class="form-control me-3 mb-3" placeholder="Email Address" />
+            <label for="email">Email Address</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="tel" name="mobile" class="form-control mb-3" placeholder="Mobile Number" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Phone number format example: +44 1234 123 123" />
+            <label for="mobile">Mobile Number</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" name="address" class="form-control me-3 mb-3" placeholder="Address" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Address format example: Example Ltd, Innovation Street, London, EC1A 1BB
+" />
+            <label for="phone">Address</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" name="image-link" class="form-control mb-3" placeholder="Enter Image Click URL" />
+            <label for="image-link">Linkedin URL</label>
+          </div>
+
+
+          <div class="form-floating mb-3">
+            <select name="divider-color" class="form-select" id="divider-color">
+              <option value="#15AADF">Altum Group (Default)</option>
+              <option value="#CEFA05">Altum Consulting</option>
+              <option value="#192B40">Altum Foundation</option>
+              <option value="#D85752">Azura Search</option>
+              <option value="#CFE6E6">Potentia</option>
+            </select>
+            <label for="divider-color">Choose Divider Line Color</label>
+          </div>
+
+
+
+
+          <!-- <div class="form-floating mb-3">
+            <select name="additional-banner" class="form-select" id="additional-banner">
+              <option value="none">None</option>
+              <option value="care-show-birmingham" selected>Care Show Birmingham</option>
+            </select>
+
+            <label for="additional-banner">Additional Banner Image</label>
+          </div> -->
+          <!--
+                    <div class="form-floating mb-3">
+                        <select name="banner" class="form-select" id="banner">
+                            <option value="none" selected="">Hide</option>
+                            <option value="sample-event-banner">Sample Event Banner</option>
+                        </select>
+
+                        <label for="banner">Event Banner Image</label>
+                    </div>
+                    -->
+                    <div class="form-floating mb-3">
+  <select name="signature-image" id="signature-image" class="form-select">
+    <option value="none">Select an Banner</option>
+    <option value="image1">Banner 1</option>
+    <option value="image2">Banner 2</option>
+    <option value="image3">Banner 3</option>
+  </select>
+  <label for="signature-image">Select a banner:</label>
+</div>
+
+
+
+          <p class="text-center">
+            <button class="btn btn-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Advanced Settings
+            </button>
+          </p>
+
+          <div class="collapse" id="collapseExample">
+            <div class="pb-1 mb-2 text-muted">Custom Line Settings</div>
+
+            <div class="form-floating mb-3">
+              <input type="text" name="custom-line-text" class="form-control mb-3" placeholder="Custom Line Text" />
+              <label for="custom-line-text">Custom Line Text</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="text" name="custom-line-link" class="form-control mb-3" placeholder="Custom Line Link" />
+              <label for="custom-line-text">Custom Line Link</label>
+            </div>
+          </div>
+
+          <div class="d-grid">
+            <button id="submit" class="btn btn-lg btn-primary">Generate Signature</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-12 col-lg-8">
+        <h2 class="mt-3 mt-lg-0">Preview:</h2>
+        <p>
+          This is just a preview. Please click the "Generate Signature" button to get your signature when
+          you are ready.
+        </p>
+
+        <p>
+          Once generated, highlight all (Windows: Ctrl + A, Mac: Cmd + A), copy, then paste into your email
+          signature editor.
+        </p>
+
+        <div id="sig-output" class="drop-shadow p-3"></div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
