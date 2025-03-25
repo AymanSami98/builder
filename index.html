@@ -88,14 +88,19 @@
 
 
 
-          <!-- <div class="form-floating mb-3">
-            <select name="additional-banner" class="form-select" id="additional-banner">
-              <option value="none">None</option>
-              <option value="care-show-birmingham" selected>Care Show Birmingham</option>
-            </select>
 
-            <label for="additional-banner">Additional Banner Image</label>
-          </div> -->
+
+<!-- User input for custom banner -->
+<div class="form-floating mb-3">
+  <input type="text" id="user-banner-url" class="form-control mb-3" placeholder="Enter Custom Promo Banner URL" />
+  <label for="user-banner-url">Custom Promo Banner Image URL</label>
+</div>
+
+<!-- Remove Banner Button (Hidden by Default) -->
+<button id="remove-banner-btn" type="button" class="btn btn-danger" style="display: none;">Remove Banner</button>
+
+
+
           <!--
                     <div class="form-floating mb-3">
                         <select name="banner" class="form-select" id="banner">
@@ -111,7 +116,6 @@
     <option value="none">Select an Banner</option>
     <option value="image1">Banner 1</option>
     <option value="image2">Banner 2</option>
-    <option value="image3">Banner 3</option>
   </select>
   <label for="signature-image">Select a banner:</label>
 </div>
