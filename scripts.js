@@ -209,15 +209,78 @@ $(function () {
    * @param {*} value
    */
   function updateBanner(value) {
-    if (value === "none") {
-      output.find(`#additional-banner`).hide();
-    } else {
-      output.find(`#additional-banner`).show();
-      output.find(`#additional-banner`).attr("src", banners[value]["image"]);
-      output.find(`#additional-banner`).attr("alt", banners[value]["alt"]);
-      output.find(`#additional-banner-link`).attr("href", banners[value]["url"]);
+    let customBannerUrl = $("#user-banner-url").val().trim();
+    let defaultImage = "https://harcusparker.co.uk/wp-content/uploads/BC5585_ALTUM_GROUP_Email_Group_Template_BannersV2_03.jpg"; // Default image
+
+    let bannerElement = $("#sig-output").find("#additional-banner");
+    let bannerLink = $("#sig-output").find("#additional-banner-link");
+    let removeButton = $("#remove-banner-btn");
+
+    // Validate if the user input is a valid URL
+    function isValidUrl(string) {
+        try {
+            new URL(string);
+            return true;
+        } catch (_) {
+            return false;
+        }
     }
-  }
+
+    // 🛑 **If "none" is selected, or the input is empty, remove the banner**
+    if (value === "none" || (customBannerUrl === "" && value !== "custom")) {
+        bannerElement.hide();
+        bannerLink.attr("href", "#");
+        removeButton.hide();
+        return;
+    }
+
+    // ✅ **If a custom URL is entered and it's valid, show it**
+    if (isValidUrl(customBannerUrl)) {
+        let updatedUrl = customBannerUrl + "?t=" + new Date().getTime();
+        bannerElement.attr("src", updatedUrl).show();
+        bannerElement.attr("alt", "User Custom Banner");
+        bannerLink.attr("href", customBannerUrl);
+        removeButton.show();
+    } else {
+        // ✅ **Use predefined banners or default**
+        let bannerImage = banners[value] ? banners[value]["image"] : defaultImage;
+        let updatedUrl = bannerImage + "?t=" + new Date().getTime();
+        let bannerAlt = banners[value] ? banners[value]["alt"] : "Temporary Banner";
+        let bannerUrl = banners[value] ? banners[value]["url"] : "#";
+
+        bannerElement.attr("src", updatedUrl).show();
+        bannerElement.attr("alt", bannerAlt);
+        bannerLink.attr("href", bannerUrl);
+        removeButton.show();
+    }
+}
+$(document).ready(function () {
+  updateBanner("default"); // Show default image initially
+
+  // Dropdown selection updates banner
+  $("#additional-banner-select").on("change", function () {
+      updateBanner(this.value);
+  });
+
+  // User-entered custom banner URL updates banner
+  $("#user-banner-url").on("input", function () {
+      updateBanner("custom");
+  });
+
+  // 🛑 **Only hide the promo banner when editing starts IF there's no custom URL**
+  $("form#sig input, form#sig select").on("input change", function () {
+      let bannerInput = $("#user-banner-url").val().trim();
+      if (bannerInput === "") {
+          updateBanner("none");
+      }
+  });
+
+  // 🛑 **Remove Banner Button Click Handler**
+  $("#remove-banner-btn").on("click", function () {
+      $("#user-banner-url").val(""); // Clear input field
+      updateBanner("none"); // Hide the banner
+  });
+});
 
   /**
    * Generates a random number between 2 integers.
@@ -261,17 +324,14 @@ $(function () {
 function updateSignatureImage(selectedImage) {
   let images = {
     image1: {
-      src: "https://i.ibb.co/bjdwWGQD/BC5585-ALTUM-GROUP-Email-Group-Template-Banners-01.jpg",
+      src: "https://harcusparker.co.uk/wp-content/uploads/BC5585_ALTUM_GROUP_Email_Group_Template_BannersV2_01.jpg",
       alt: "Banner 1",
     },
     image2: {
-      src: "https://i.ibb.co/LhDrrhkX/BC5585-ALTUM-GROUP-Email-Group-Template-Banners-03.jpg",
+      src: "https://harcusparker.co.uk/wp-content/uploads/BC5585_ALTUM_GROUP_Email_Group_Template_BannersV2_02.jpg",
       alt: "Banner 2",
     },
-    image3: {
-      src: "https://i.ibb.co/vCgLGSc2/BC5585-ALTUM-GROUP-Email-Group-Template-Banners-02.jpg",
-      alt: "Banner 3",
-    },
+
   };
 
   if (selectedImage === "none") {
